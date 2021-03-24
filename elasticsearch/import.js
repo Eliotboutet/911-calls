@@ -25,7 +25,18 @@ async function run() {
   fs.createReadStream('../911.csv')
     .pipe(csv())
     .on('data', data => {
-      const call = { 
+      const call = {
+        'lat': data.lat,
+        'lng': data.lng,
+        'desc': data.desc,
+        'zip': data.zip,
+        'title': data.title,
+        'categoryDetails': data.title.substr(0, data.title.indexOf(':')),
+        'timeStamp': data,
+        'month' : date.getMonth(),
+        'twp': data.twp,
+        'addrr': data.addrr,
+        'e': data.e
       };
       // TODO créer l'objet call à partir de la ligne
     })
